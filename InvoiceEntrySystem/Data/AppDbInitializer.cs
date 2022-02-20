@@ -29,6 +29,8 @@ namespace InvoiceEntrySystem.Data
                             DateReceived=DateTime.Now.AddDays(10),
                             Paid=true,
                             DeleteMistake=false,
+                            LineItemsNumber=1,
+                            Total=59.9,
                         },
 
                         new Invoice()
@@ -39,6 +41,8 @@ namespace InvoiceEntrySystem.Data
                             DateReceived=DateTime.Now.AddDays(11),
                             Paid=false,
                             DeleteMistake=false,
+                            LineItemsNumber=2,
+                            Total=131.72,
                         },
                         new Invoice()
                         {
@@ -48,6 +52,8 @@ namespace InvoiceEntrySystem.Data
                             DateReceived=DateTime.Now.AddDays(12),
                             Paid=false,
                             DeleteMistake=true,
+                            LineItemsNumber=3,
+                            Total=1966.91,
                         },
                     });
                     
@@ -65,6 +71,7 @@ namespace InvoiceEntrySystem.Data
                             Quantity=10,
                             UnitPrice=5.99,
                             InvoiceId=1,
+                            LineTotal=59.0,
                         },
 
                         //Boston Pizza
@@ -74,6 +81,7 @@ namespace InvoiceEntrySystem.Data
                             Quantity=3,
                             UnitPrice=14.59,
                             InvoiceId=2,
+                            LineTotal=43.77,
                         },
 
                         new LineItem()
@@ -82,6 +90,7 @@ namespace InvoiceEntrySystem.Data
                             Quantity=5,
                             UnitPrice=17.59,
                             InvoiceId=2,
+                            LineTotal=87.95,
                         },
 
                         //Dunder Mifflin
@@ -91,6 +100,7 @@ namespace InvoiceEntrySystem.Data
                             Quantity=500,
                             UnitPrice=0.79,
                             InvoiceId=3,
+                            LineTotal=395,
                         },
 
                         new LineItem()
@@ -99,6 +109,7 @@ namespace InvoiceEntrySystem.Data
                             Quantity=7,
                             UnitPrice=35.99,
                             InvoiceId=3,
+                            LineTotal=251.93,
                         },
 
                         new LineItem()
@@ -107,6 +118,7 @@ namespace InvoiceEntrySystem.Data
                             Quantity=2,
                             UnitPrice=659.99,
                             InvoiceId=3,
+                            LineTotal=1319.98,
                         },
                     });
                     context.SaveChanges();

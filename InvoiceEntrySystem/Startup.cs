@@ -59,11 +59,13 @@ namespace InvoiceEntrySystem
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Invoices}/{action=Index}/{id?}");
             });
 
             //Seed database
             AppDbInitializer.Seed(app);
+            //AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
+
         }
     }
 }
