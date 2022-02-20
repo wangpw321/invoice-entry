@@ -1,0 +1,122 @@
+﻿@model Invoice
+
+@{
+    ViewData["Title"] = "Delete the Invoice";
+
+    var paid = Model.Paid ? "Yes" : "No";
+    var dm = Model.DeleteMistake ? "Yes" : "No";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Delete the Invoice</h1>
+        </p>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="SupplierName" class="control-label"></label>
+                                <input asp-for="SupplierName" class="form-control" readonly />
+                                <span asp-validation-for="SupplierName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateOrdered" class="control-label"></label>
+                                <input asp-for="DateOrdered" type="date" class="form-control" readonly />
+                                <span asp-validation-for="DateOrdered" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateReceived" class="control-label"></label>
+                                <input asp-for="DateReceived" type="date" class="form-control" readonly />
+                                <span asp-validation-for="DateReceived" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Paid" class="control-label"></label>
+                                <input asp-for="@paid" class="form-control" readonly />
+                                <span asp-validation-for="Paid" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="InvoiceNumber" class="control-label"></label>
+                                <input asp-for="InvoiceNumber" class="form-control" readonly />
+                                <span asp-validation-for="InvoiceNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="LineItemsNumber" class="control-label"></label>
+                                <input asp-for="LineItems.Count" class="form-control" readonly />
+                                <span asp-validation-for="LineItemsNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Total" class="control-label"></label>
+                                <input asp-for="Total" class="form-control" readonly />
+                                <span asp-validation-for="Total" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DeleteMistake" class="control-label"></label>
+                                <input asp-for="@dm" class="form-control" readonly />
+                                <span asp-validation-for="DeleteMistake" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="control-label">Item Description</label>
+                            @foreach (var item in Model.LineItems)
+                            {
+                                <div class="form-group">
+                                    <input asp-for="@item.ItemDescription" class="form-control" readonly />
+                                    <span asp-validation-for="@item.ItemDescription" class="text-danger"></span>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">Quantity</label>
+                            @foreach (var item in Model.LineItems)
+                            {
+                                <div class="form-group">
+                                    <input asp-for="@item.Quantity" class="form-control" readonly />
+                                    <span asp-validation-for="@item.Quantity" class="text-danger"></span>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">Price</label>
+                            @foreach (var item in Model.LineItems)
+                            {
+                                <div class="form-group">
+
+                                    <input asp-for="@item.UnitPrice" class="form-control" readonly />
+                                    <span asp-validation-for="@item.UnitPrice" class="text-danger"></span>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">Line Total</label>
+                            @foreach (var item in Model.LineItems)
+                            {
+                                <div class="form-group">
+
+                                    <input asp-for="@item.LineTotal" class="form-control" readonly />
+                                    <span asp-validation-for="@item.LineTotal" class="text-danger"></span>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+
+                </form>
+                <div class="form-group">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Delete Confirm" class="btn btn-danger float-right" />
+                    </form>
+                    <a class="btn btn-outline-secondary float-left" asp-action="Index">Show All</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
