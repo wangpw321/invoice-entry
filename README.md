@@ -1,4 +1,2 @@
-# invoice-entry-tracrite
-Interview project for Tracrite Software
-
+# invoice-entry
 URL: https://invoice-entry.azurewebsites.net/
